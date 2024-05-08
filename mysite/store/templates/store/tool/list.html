@@ -1,0 +1,18 @@
+{% extends "store/base.html" %}
+
+{% block title %}Инструменты{% endblock %}
+
+{% block content %}
+    <h1>Инструменты. список всех инструментов.</h1>
+        {% for tool in tools %}
+            <h2>
+            <a href="{% url 'store:tool_detail' tool.id %}">
+                {{ tool.code }}:{{ tool.name }}
+            </a>
+            </h2>
+            <p class="date">
+                Created {{ tool.created }}
+            </p>
+            {{ tool.body|truncatewords:30|linebreaks }}
+        {% endfor %}
+{% endblock %}
