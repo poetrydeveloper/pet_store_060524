@@ -4,9 +4,11 @@ from .models import Tool
 
 def tool_list(request):
     tools = Tool.objects.all()
+    print("Длинна")
+    print(len(tools))
     return render(request,
                   'store/tool/list.html',
-                  {'store': tools})
+                  {'tools': tools})
 
 
 def tool_detail(request, id):

@@ -5,6 +5,6 @@ app_name = 'store'
 
 urlpatterns = [
     # представления поста
-    path('', views.tool_list, name='post_list'),
-    path('<int:id>/', views.tool_detail, name='post_detail'),
+    path('', views.tool_list, name='tool_list'),
+    path('<int:id>/', views.tool_detail, name='tool_detail'),
 ]
