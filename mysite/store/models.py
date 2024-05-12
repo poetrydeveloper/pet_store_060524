@@ -1,7 +1,11 @@
 from django.db import models
+from django.urls import reverse
+from taggit.managers import TaggableManager
 
 
 class Tool(models.Model):
+    tags = TaggableManager()
+
     class Provider(models.TextChoices):
         TH_TOOLS = 'TH', 'th-tool.by'
         TT_TOOLS = 'TT', 'www.store.by'
@@ -25,3 +29,7 @@ class Tool(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('store:tool_detail',
+                       args=[self.id])

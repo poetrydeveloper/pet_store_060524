@@ -6,13 +6,15 @@
     <h1>Инструменты. список всех инструментов.</h1>
         {% for tool in tools %}
             <h2>
-            <a href="{% url 'store:tool_detail' tool.id %}">
+            <a href="{{ tool.get_absolute_url }}">
                 {{ tool.code }}:{{ tool.name }}
             </a>
             </h2>
+            <p class="tags">Tags: {{ tool.tags.all|join:", " }}</p>
             <p class="date">
                 Created {{ tool.created }}
             </p>
             {{ tool.body|truncatewords:30|linebreaks }}
         {% endfor %}
+        {% include "pagination.html" with page=page_obj %}
 {% endblock %}
